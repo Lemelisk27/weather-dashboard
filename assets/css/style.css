@@ -1,0 +1,63 @@
+:root {
+    --headerOne: rgb(52,99,188);
+    --headerTwo: rgb(32,9,75);
+    --lightText: white;
+    --darkText: black;
+    --searchButton: rgb(80,152,230);
+    --historyButton: rgb(174,174,174);
+    --uvGreen: rgb(21,115,71);
+    --carBack: rgb(45,62,80);
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ul {
+    list-style-type: none;
+}
+
+header {
+    text-align: center;
+    color: var(--lightText);
+    background-image: linear-gradient(to right, var(--headerOne), var(--headerTwo));
+    margin: 0;
+    padding: 5px;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+.searhColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.dataOutput {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#currentDate img {
+    height: 50px;
+    width: 50px;
+}
+
+#current {
+    border: 1px black solid;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+#currentDate {
+    display: flex;
+    flex-direction: column;
+}
+
+#fiveDays {
+    display: flex;
+    flex-direction: row;
+}

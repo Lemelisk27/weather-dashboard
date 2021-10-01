@@ -5,10 +5,85 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
-    <link rel="stylesheet" href="./assets/css/style.css">i
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
 
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
+
+    <main>
+        <span id="searhColumn" class="searhColumn">
+            <h2>Search for a City:</h2>
+            <input type="text" id="city" placeholder="Seattle">
+            <button id="searchBtn">Search</button>
+            <span id="cityHistory"></span>
+        </span>
+        <span id="dataOutput">
+            <span id="current">
+                <h2>Seattle (9/30/2021)</h2>
+                <img src="https://openweathermap.org/img/w/01d.png" alt="Weather Image">
+                <ul>
+                    <li>Temp:</li>
+                    <li>Wind:</li>
+                    <li>Humidity:</li>
+                    <span id="uvIndex">
+                        <li>UV Index:</li>
+                        <li>0.47</li>
+                    </span>
+                </ul>
+            </span>
+            <span id="fiveDays">
+                <h2>5-Day Forecast</h2>
+                <span id="day0">
+                    <h3>10/01/2021</h3>
+                    <img src="https://openweathermap.org/img/w/01d.png" alt="Weather Image">
+                    <ul>
+                        <li>Temp:</li>
+                        <li>Wind:</li>
+                        <li>Humidity</li>
+                    </ul>
+                </span>
+                <span id="day1">
+                    <h3>10/02/2021</h3>
+                    <img src="https://openweathermap.org/img/w/01d.png" alt="Weather Image">
+                    <ul>
+                        <li>Temp:</li>
+                        <li>Wind:</li>
+                        <li>Humidity</li>
+                    </ul>
+                </span>
+                <span id="day2">
+                    <h3>10/03/2021</h3>
+                    <img src="https://openweathermap.org/img/w/01d.png" alt="Weather Image">
+                    <ul>
+                        <li>Temp:</li>
+                        <li>Wind:</li>
+                        <li>Humidity</li>
+                    </ul>
+                </span>
+                <span id="day3">
+                    <h3>10/04/2021</h3>
+                    <img src="https://openweathermap.org/img/w/01d.png" alt="Weather Image">
+                    <ul>
+                        <li>Temp:</li>
+                        <li>Wind:</li>
+                        <li>Humidity</li>
+                    </ul>
+                </span>
+                <span id="day4">
+                    <h3>10/05/2021</h3>
+                    <img src="https://openweathermap.org/img/w/01d.png" alt="Weather Image">
+                    <ul>
+                        <li>Temp:</li>
+                        <li>Wind:</li>
+                        <li>Humidity</li>
+                    </ul>
+                </span>
+            </span>
+        </span>
+    </main>
 
     <script src="./assets/js/script.js"></script>
 </body>
