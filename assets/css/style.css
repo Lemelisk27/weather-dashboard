@@ -23,6 +23,7 @@ header {
     justify-content: center;
     align-items: center;
     background-image: linear-gradient(to right, var(--headerOne), var(--headerTwo));
+    font-size: 150%;
     color: var(--lightText);
     margin: 0;
     height: 100px;
@@ -44,8 +45,11 @@ main {
 }
 
 .searchBtn {
+    font-size: 110%;
     background-color: var(--searchButton);
+    color: var(--lightText);
     border: none;
+    border-radius: 5px;
     padding: 10px 0;
     margin-top: 10px;
     margin-bottom: 5px;
@@ -53,6 +57,7 @@ main {
 
 .searchBtn:hover {
     background-color: var(--historyButton);
+    color: black;
 }
 
 .lineBreak {
@@ -61,14 +66,17 @@ main {
 }
 
 .historyBtn {
+    font-size: 110%;
     background-color: var(--historyButton);
     border: none;
+    border-radius: 5px;
     padding: 10px 0;
     margin: 5px 0;
 }
 
 .historyBtn:hover {
     background-color: var(--searchButton);
+    color: var(--lightText);
 }
 
 .mainPage {
