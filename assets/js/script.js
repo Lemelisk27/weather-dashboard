@@ -21,6 +21,10 @@ var lon = ""
 var loaded = false
 var newCityTwo = ""
 var newArray = []
+var stateCity = []
+var newTrim = ""
+var states = ["al", "ak", "az", "ar", "ca", "co", "ct", "de", "fl", "ga", "hi", "id", "il", "in", "ia", "ks", "ky", "la", "me", "md", "ma", "mi", "mn", "ms", "mo", "mt", "ne", "nv", "nh", "nj", "nm", "ny", "nc", "nd", "oh", "ok", "or", "pa", "ri", "sc", "sd", "tn", "tx", "ut", "vt", "va", "wa", "wv", "wi", "wy"]
+var stateArray =[]
 
 //Pulls data from local storage, deletes any history buttons that might be on the page. And creates new history buttons in reverse order so the latest one is at the top.
 function init() {
@@ -45,15 +49,9 @@ function init() {
 
 init()
 
-//Makes sure that the first letter of each word the user typed is upper case and stores the last 5 searches to local storage.
+//Stores the last 5 searches to local storage.
 function storeData() {
-    var trimCity = searchCity.toLowerCase()
-    var newCity = trimCity.split(" ")
-    for (let i = 0; i < newCity.length; i++) {
-        newCity[i] = newCity[i].charAt(0).toUpperCase() + newCity[i].slice(1)
-    }
-    newCityTwo = newCity.join(" ")
-    newArray.push(newCityTwo)
+    newArray.push(searchCity)
     if (newArray.length > 5) {
         for (let i = newArray.length; i > 5; i--) {
             newArray.shift()            
@@ -158,6 +156,26 @@ secondBox.on("click", function (event){
     }
     else {
         searchCity = event.target.innerHTML
+    }    
+    if (searchCity.includes(",") && !searchCity.includes("us-")) {
+        searchCity = searchCity.toLocaleLowerCase()
+        stateCity = searchCity.split(" ")
+        for (let i = stateCity.length -2; i < stateCity.length -1; i++) {
+            stateCity[i] = stateCity[i].slice(0, -1)  
+        }
+        for (let i = stateCity.length -1; i < stateCity.length; i++) {
+            if (states.includes(stateCity[i])) {
+                stateCity[i] = "us-"+stateCity[i].toLocaleLowerCase()
+            }
+        }
+        for (let i = 0; i < stateCity.length -1; i++) {
+            stateArray.push(stateCity[i])  
+        }
+        newTrim = stateArray.join(" ")
+        for (let i = stateCity.length -1; i < stateCity.length; i++) {
+            newTrim = newTrim + ", " + stateCity[i]
+        }
+        searchCity = newTrim
     }
     queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "&units=imperial&appid=" + APIKey;
     cityInput.val("")
