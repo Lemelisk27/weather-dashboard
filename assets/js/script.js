@@ -159,7 +159,7 @@ secondBox.on("click", function (event){
     else {
         searchCity = event.target.innerHTML
     }
-    queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "&units=imperial&appid=" + APIKey;
+    queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "&units=imperial&appid=" + APIKey;
     cityInput.val("")
     removeData()
     loaded = true
