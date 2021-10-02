@@ -6,6 +6,8 @@
     --searchButton: rgb(80,152,230);
     --historyButton: rgb(174,174,174);
     --uvGreen: rgb(21,115,71);
+    --uvRed: red;
+    --uvYellow: yellow;
     --carBack: rgb(45,62,80);
 }
 
@@ -91,23 +93,15 @@ main {
     margin-left: 30px;
 }
 
-.current {
-    background-color: blue;
-    width: 60%;
-}
-
 .today {
     display: flex;
     flex-direction: row;
 }
 
 .uvNbr {
-    border: 1px solid black;
     border-radius: 5px;
     width: 75px;
     text-align: center;
-    color: var(--lightText);
-    background-color: var(--uvGreen);
 }
 
 .fiveDays {
