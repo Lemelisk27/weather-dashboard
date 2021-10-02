@@ -51,6 +51,10 @@ main {
     margin-bottom: 5px;
 }
 
+.searchBtn:hover {
+    background-color: var(--historyButton);
+}
+
 .lineBreak {
     width: 100%;
     border-top: 3px solid lightgray;
@@ -61,6 +65,10 @@ main {
     border: none;
     padding: 10px 0;
     margin: 5px 0;
+}
+
+.historyBtn:hover {
+    background-color: var(--searchButton);
 }
 
 .mainPage {
