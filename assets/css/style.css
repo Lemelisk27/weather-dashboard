@@ -13,16 +13,19 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-ul {
-    list-style-type: none;
+body img {
+    height: 50px;
+    width: 50px;
 }
 
 header {
-    text-align: center;
-    color: var(--lightText);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-image: linear-gradient(to right, var(--headerOne), var(--headerTwo));
+    color: var(--lightText);
     margin: 0;
-    padding: 5px;
+    height: 100px;
 }
 
 main {
@@ -30,34 +33,75 @@ main {
     flex-direction: row;
 }
 
-.searhColumn {
+.searchBox {
     display: flex;
     flex-direction: column;
+    width: 25%;
 }
 
-.dataOutput {
+.cityInput {
+    height: 25px;
+}
+
+.searchBtn {
+    background-color: var(--searchButton);
+    border: none;
+    padding: 10px 0;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.lineBreak {
+    width: 100%;
+    border-top: 3px solid lightgray;
+}
+
+.historyBtn {
+    background-color: var(--historyButton);
+    border: none;
+    padding: 10px 0;
+    margin: 5px 0;
+}
+
+.mainPage {
+    border: 1px solid black;
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.weatherInfo {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    margin-left: 30px;
 }
 
-#currentDate img {
-    height: 50px;
-    width: 50px;
+.current {
+    background-color: blue;
+    width: 60%;
 }
 
-#current {
-    border: 1px black solid;
-    margin: 1rem;
-    padding: 1rem;
-}
-
-#currentDate {
-    display: flex;
-    flex-direction: column;
-}
-
-#fiveDays {
+.today {
     display: flex;
     flex-direction: row;
+}
+
+.uvNbr {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 75px;
+    text-align: center;
+    color: var(--lightText);
+    background-color: var(--uvGreen);
+}
+
+.fiveDays {
+    display: flex;
+    flex-direction: row;
+}
+
+.dayCard {
+    background-color: var(--carBack);
+    color: var(--lightText);
+    margin: 0 10px;
+    padding: 0 20px;
 }

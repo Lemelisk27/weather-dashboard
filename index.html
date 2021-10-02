@@ -12,74 +12,70 @@
     <header>
         <h1>Weather Dashboard</h1>
     </header>
-
     <main>
-        <span id="searhColumn" class="searhColumn">
+        <span id="searchBox" class="searchBox">
             <h2>Search for a City:</h2>
-            <input type="text" id="city" placeholder="Seattle">
-            <button id="searchBtn">Search</button>
-            <span id="cityHistory"></span>
+            <input type="text" id="cityInput" class="cityInput" placeholder="Seattle">
+            <button id="searchBtn" class="searchBtn">Search</button>
+            <hr class="lineBreak">
+            <button class="historyBtn">Austin</button>
+            <button class="historyBtn">Chicago</button>
+            <button class="historyBtn">New York</button>
+            <button class="historyBtn">Orlando</button>
+            <button class="historyBtn">Denver</button>
         </span>
-        <span id="dataOutput">
-            <span id="current">
-                <h2>Seattle (9/30/2021)</h2>
-                <img src="https://openweathermap.org/img/w/01d.png" alt="Weather Image">
-                <ul>
-                    <li>Temp:</li>
-                    <li>Wind:</li>
-                    <li>Humidity:</li>
-                    <span id="uvIndex">
-                        <li>UV Index:</li>
-                        <li>0.47</li>
+        <span id="weatherInfo" class="weatherInfo">
+            <span id="mainPage" class="mainPage">
+                <span id="current" class="current">
+                    <span class="today">
+                        <h2>Atlanta (10/1/2021)</h2>
+                        <img src="https://openweathermap.org/img/w/01d.png" alt="Weather Icon">
                     </span>
-                </ul>
+                    <p>Temp: 74.01 F</p>
+                    <p>Wind: 66.67 MPH</p>
+                    <p>Humidity: 46%</p>
+                    <span id="uvIndex" clas="uvIndex">
+                        <p>UV Index:</p>
+                        <p id="uvNbr" class="uvNbr">0.47</p>
+                    </span>
+                </span>
             </span>
-            <span id="fiveDays">
-                <h2>5-Day Forecast</h2>
-                <span id="day0">
-                    <h3>10/01/2021</h3>
-                    <img src="https://openweathermap.org/img/w/01d.png" alt="Weather Image">
-                    <ul>
-                        <li>Temp:</li>
-                        <li>Wind:</li>
-                        <li>Humidity</li>
-                    </ul>
+            <h3>5-Day Forecast:</h3>
+            <span id="fiveDays" class="fiveDays">
+                <span id="day0" class="dayCard">
+                    <h3>10/2/2021</h3>
+                    <img src="https://openweathermap.org/img/w/01d.png" alt="Weather Icon">
+                    <p>Temp: 73.72 F</p>
+                    <p>Wind: 9.53 MPH</p>
+                    <p>Humidity: 66%</p>
                 </span>
-                <span id="day1">
-                    <h3>10/02/2021</h3>
-                    <img src="https://openweathermap.org/img/w/01d.png" alt="Weather Image">
-                    <ul>
-                        <li>Temp:</li>
-                        <li>Wind:</li>
-                        <li>Humidity</li>
-                    </ul>
+                <span id="day1" class="dayCard">
+                    <h3>10/3/2021</h3>
+                    <img src="https://openweathermap.org/img/w/01d.png" alt="Weather Icon">
+                    <p>Temp: 49.5 F</p>
+                    <p>Wind: 16.24 MPH</p>
+                    <p>Humidity: 30%</p>
                 </span>
-                <span id="day2">
-                    <h3>10/03/2021</h3>
-                    <img src="https://openweathermap.org/img/w/01d.png" alt="Weather Image">
-                    <ul>
-                        <li>Temp:</li>
-                        <li>Wind:</li>
-                        <li>Humidity</li>
-                    </ul>
+                <span id="day2" class="dayCard">
+                    <h3>10/4/2021</h3>
+                    <img src="https://openweathermap.org/img/w/01d.png" alt="Weather Icon">
+                    <p>Temp: 53.38 F</p>
+                    <p>Wind: 6.15 MPH</p>
+                    <p>Humidity: 17%</p>
                 </span>
-                <span id="day3">
-                    <h3>10/04/2021</h3>
-                    <img src="https://openweathermap.org/img/w/01d.png" alt="Weather Image">
-                    <ul>
-                        <li>Temp:</li>
-                        <li>Wind:</li>
-                        <li>Humidity</li>
-                    </ul>
+                <span id="day3" class="dayCard">
+                    <h3>10/5/2021</h3>
+                    <img src="https://openweathermap.org/img/w/01d.png" alt="Weather Icon">
+                    <p>Temp: 61.43 F</p>
+                    <p>Wind: 4.12 MPH</p>
+                    <p>Humidity: 20%</p>
                 </span>
-                <span id="day4">
-                    <h3>10/05/2021</h3>
-                    <img src="https://openweathermap.org/img/w/01d.png" alt="Weather Image">
-                    <ul>
-                        <li>Temp:</li>
-                        <li>Wind:</li>
-                        <li>Humidity</li>
-                    </ul>
+                <span id="day4" class="dayCard">
+                    <h3>10/6/2021</h3>
+                    <img src="https://openweathermap.org/img/w/01d.png" alt="Weather Icon">
+                    <p>Temp: 69.04 F</p>
+                    <p>Wind: 4.27 MPH</p>
+                    <p>Humidity: 24%</p>
                 </span>
             </span>
         </span>
