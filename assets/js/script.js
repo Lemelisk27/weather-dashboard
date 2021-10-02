@@ -1,7 +1,9 @@
 //Sets variables
 var APIKey = "e5dea1d1c3f38ea6d30bc512279c3257"
-var city = "seattle,us-wa"
-var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
+var searchCity = ""
+var queryURL = ""
+var input
+// var searchCity = "seattle,us-wa"
 var city = $("#cityDate")
 var temp = $("#currentTemp")
 var currentWind = $("#currentWind")
@@ -9,17 +11,75 @@ var currentHumid = $("#currentHumid")
 var uvIndex = $(".uvIndex")
 var uvNbr = $("#uvNbr")
 var fiveDays = $("#fiveDays")
-var cityName
-var lat
-var lon
+var searchBtn = $("#searchBtn")
+var cityInput = $("#cityInput")
+var searchBox = $("#searchBox")
+var cityName = ""
+var lat = ""
+var lon = ""
+var loaded = false
+var newCityTwo = ""
+var newArray = []
 
-getData()
+//Pulls data from local storage, deletes any history buttons that might be on the page. And creates new history buttons in reverse order so the latest one is at the top.
+function init() {
+    var storedData = JSON.parse(localStorage.getItem("newList"))
+    if (storedData !== null) {
+        newArray = storedData
+    }
+    if (newArray.length > 0) {
+        for (let i = 0; i < 5; i++) {
+            var delBtn = $("#historyBtn" + [i])
+            delBtn.remove()
+        }
+        for (let i = newArray.length - 1; i > -1; i--) {
+            var newBtn = document.createElement("button")
+            newBtn.classList.add("historyBtn")
+            newBtn.setAttribute("id", "historyBtn" + [i])
+            newBtn.innerHTML = newArray[i]
+            searchBox.append(newBtn)
+        }
+    }
+}
+
+init()
+
+//Makes sure that the first letter of each word the user typed is upper case and stores the last 5 searches to local storage.
+function storeData() {
+    var trimCity = searchCity.toLowerCase()
+    var newCity = trimCity.split(" ")
+    for (let i = 0; i < newCity.length; i++) {
+        newCity[i] = newCity[i].charAt(0).toUpperCase() + newCity[i].slice(1)
+    }
+    newCityTwo = newCity.join(" ")
+    newArray.push(newCityTwo)
+    if (newArray.length > 5) {
+        for (let i = newArray.length; i > 5; i--) {
+            newArray.shift()            
+        }
+    }
+    localStorage.setItem("newList", JSON.stringify(newArray))
+}
+
+//If data has aleady been loaded this function removes the 5 day forecast cards.
+function removeData() {
+    if (!loaded) {
+        return;
+    }
+    else {
+        for (let i = 1; i < 6; i++) {
+            var dayCard = $("#dayCard" + [i])
+            dayCard.remove()            
+        }
+    }
+}
 
 //Function to pull the data from the APIs, parse it, and apply it to the page.
 function getData() {
     fetch(queryURL)
         .then(function (response) {
             if (!response.ok) {
+                alert("Unable to connect to 3rd party site, please relaod the page.")
                 return;
             }
             else {
@@ -36,6 +96,7 @@ function getData() {
             fetch(secondURL)
             .then(function (response) {
                 if (!response.ok) {
+                    alert("Unable to connect to 3rd party site, please relaod the page.")
                     return;
                 }
                 else {
@@ -66,6 +127,7 @@ function getData() {
                 for (let i = 1; i < 6; i++) {
                     var dayCard = document.createElement("span")
                     dayCard.classList.add("dayCard")
+                    dayCard.setAttribute("id", "dayCard" + [i])
                     fiveDays.append(dayCard)
                     var dayDate = document.createElement("h3")
                     dayCard.append(dayDate)
@@ -86,3 +148,22 @@ function getData() {
             })
         })
 }
+
+searchBtn.on("click", function (event){
+    event.preventDefault()
+    searchCity = cityInput.val()
+    queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "&units=imperial&appid=" + APIKey;
+    cityInput.val("")
+    removeData()
+    loaded = true
+    getData()
+    storeData()
+    init()
+})
+
+cityInput.on("keyup", function (event){
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        searchBtn.click()
+    }
+})

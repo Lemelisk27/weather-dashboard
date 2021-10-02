@@ -68,6 +68,7 @@ main {
 }
 
 .historyBtn {
+    text-align: center;
     font-size: 110%;
     background-color: var(--historyButton);
     border: none;
