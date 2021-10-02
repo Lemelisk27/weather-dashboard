@@ -14,6 +14,7 @@ var fiveDays = $("#fiveDays")
 var searchBtn = $("#searchBtn")
 var cityInput = $("#cityInput")
 var searchBox = $("#searchBox")
+var secondBox = $("#secondBox")
 var cityName = ""
 var lat = ""
 var lon = ""
@@ -37,7 +38,7 @@ function init() {
             newBtn.classList.add("historyBtn")
             newBtn.setAttribute("id", "historyBtn" + [i])
             newBtn.innerHTML = newArray[i]
-            searchBox.append(newBtn)
+            secondBox.append(newBtn)
         }
     }
 }
@@ -149,9 +150,15 @@ function getData() {
         })
 }
 
-searchBtn.on("click", function (event){
+//Event listener for when the user clicks on a button
+secondBox.on("click", function (event){
     event.preventDefault()
-    searchCity = cityInput.val()
+    if (event.target.innerHTML === "Search") {
+        searchCity = cityInput.val()
+    }
+    else {
+        searchCity = event.target.innerHTML
+    }
     queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "&units=imperial&appid=" + APIKey;
     cityInput.val("")
     removeData()
@@ -161,6 +168,7 @@ searchBtn.on("click", function (event){
     init()
 })
 
+//Submits the request if the user hits the enter key.
 cityInput.on("keyup", function (event){
     if (event.keyCode === 13) {
         event.preventDefault();
