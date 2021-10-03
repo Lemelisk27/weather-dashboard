@@ -35,7 +35,7 @@ function init() {
         newArray = storedData
     }
     if (newArray.length > 0) {
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 8; i++) {
             var delBtn = $("#historyBtn" + [i])
             delBtn.remove()
         }
@@ -57,8 +57,8 @@ function storeData() {
     if (!newArray.includes(searchCity)) {
         newArray.push(searchCity)
     }
-    if (newArray.length > 5) {
-        for (let i = newArray.length; i > 5; i--) {
+    if (newArray.length > 8) {
+        for (let i = newArray.length; i > 8; i--) {
             newArray.shift()            
         }
     }
