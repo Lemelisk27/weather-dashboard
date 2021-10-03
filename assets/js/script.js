@@ -3,7 +3,6 @@ var APIKey = "e5dea1d1c3f38ea6d30bc512279c3257"
 var searchCity = ""
 var queryURL = ""
 var input
-// var searchCity = "seattle,us-wa"
 var city = $("#cityDate")
 var temp = $("#currentTemp")
 var currentWind = $("#currentWind")
@@ -24,6 +23,9 @@ var newArray = []
 var stateCity = []
 var newTrim = ""
 var states = ["al", "ak", "az", "ar", "ca", "co", "ct", "de", "fl", "ga", "hi", "id", "il", "in", "ia", "ks", "ky", "la", "me", "md", "ma", "mi", "mn", "ms", "mo", "mt", "ne", "nv", "nh", "nj", "nm", "ny", "nc", "nd", "oh", "ok", "or", "pa", "ri", "sc", "sd", "tn", "tx", "ut", "vt", "va", "wa", "wv", "wi", "wy"]
+var capStates = states.join(",")
+capStates = capStates.toLocaleUpperCase()
+var capStatesArray = capStates.split(",")
 var stateArray =[]
 
 //Pulls data from local storage, deletes any history buttons that might be on the page. And creates new history buttons in reverse order so the latest one is at the top.
@@ -49,9 +51,12 @@ function init() {
 
 init()
 
-//Stores the last 5 searches to local storage.
+//Stores the last 5 searches to local storage. Does NOT include the search if it's already on the list.
 function storeData() {
-    newArray.push(searchCity)
+    searchCity = searchCity.replace("US-", "")
+    if (!newArray.includes(searchCity)) {
+        newArray.push(searchCity)
+    }
     if (newArray.length > 5) {
         for (let i = newArray.length; i > 5; i--) {
             newArray.shift()            
@@ -157,18 +162,20 @@ secondBox.on("click", function (event){
     else {
         searchCity = event.target.innerHTML
     }    
-    if (searchCity.includes(",") && !searchCity.includes("us-")) {
-        searchCity = searchCity.toLocaleLowerCase()
+    if (searchCity.includes(",") && !searchCity.includes("us-") && !searchCity.includes("US-")) {
+        searchCity = searchCity.toUpperCase()
         stateCity = searchCity.split(" ")
         for (let i = stateCity.length -2; i < stateCity.length -1; i++) {
-            stateCity[i] = stateCity[i].slice(0, -1)  
+            stateCity[i] = stateCity[i].slice(0, -1)
         }
         for (let i = stateCity.length -1; i < stateCity.length; i++) {
-            if (states.includes(stateCity[i])) {
-                stateCity[i] = "us-"+stateCity[i].toLocaleLowerCase()
+            if (capStatesArray.includes(stateCity[i]) || states.includes(stateCity[i])) {
+                stateCity[i] = "US-"+stateCity[i].toUpperCase()
             }
         }
         for (let i = 0; i < stateCity.length -1; i++) {
+            stateCity[i] = stateCity[i].toLowerCase()
+            stateCity[i] = stateCity[i].charAt(0).toUpperCase() + stateCity[i].slice(1) 
             stateArray.push(stateCity[i])  
         }
         newTrim = stateArray.join(" ")
@@ -176,6 +183,8 @@ secondBox.on("click", function (event){
             newTrim = newTrim + ", " + stateCity[i]
         }
         searchCity = newTrim
+        stateCity = []
+        stateArray = []
     }
     queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "&units=imperial&appid=" + APIKey;
     cityInput.val("")
