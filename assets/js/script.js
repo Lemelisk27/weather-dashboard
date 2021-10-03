@@ -51,7 +51,7 @@ function init() {
 
 init()
 
-//Stores the last 5 searches to local storage. Does NOT include the search if it's already on the list.
+//Stores the last 8 searches to local storage. Does NOT include the search if it's already on the list.
 function storeData() {
     searchCity = searchCity.replace("US-", "")
     if (!newArray.includes(searchCity)) {
